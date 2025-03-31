@@ -1,0 +1,134 @@
+<body>
+    <style>
+        body {
+            background-color: #1E3A5F;
+            font-family: Arial, sans-serif;
+            color: #FFFFFF;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        #banner {
+            background-color: #FFA500;
+            padding: 20px;
+            border-radius: 5px;
+            color: #000000;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        
+        #banner h2 {
+            margin-top: 0;
+        }
+        
+        #bucketList {
+            padding-left: 20px;
+        }
+        
+        #bucketList li {
+            margin-bottom: 5px;
+        }
+        
+        .controls {
+            max-width: 600px;
+        }
+        
+        .input-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .input-group input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .input-group button {
+            padding: 8px 15px;
+            background-color: #FF4500;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .button-group button {
+            padding: 8px 15px;
+            background-color: #FF4500;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        
+        button:hover {
+            background-color: #E03E00;
+        }
+    </style>
+
+
+    <div id="banner">
+        <h2>Hi there! I'm Quenzzy.</h2>
+        <ul id="bucketList">
+            <li>I want to travel all the countries.</li>
+            <li>I want to master Python programming.</li>
+            <li>I want to try sky diving.</li>
+            <li>I want build my own application.</li>
+            <li>I want to learn to play all instruments.</li>
+        </ul>
+    </div>
+    
+    <div class="controls">
+        <div class="input-group">
+            <input type="text" id="newItem" placeholder="new hobby item">
+            <button onclick="addItem()">Add New</button>
+        </div>
+        
+        <div class="button-group">
+            <button onclick="changeBannerBg()">Change banner background</button>
+            <button onclick="changePageBg()">Change page background</button>
+            <button onclick="addItem()">Add new item on the list</button>
+        </div>
+    </div>
+
+    <script>
+        // Banner background colors
+        const bannerColors = ["#FFA500", "#4CAF50", "#9C27B0", "#2196F3"];
+        let bannerColorIndex = 0;
+        
+        // Page background colors
+        const pageColors = ["#1E3A5F", "#3E2723", "#1B5E20", "#0D47A1"];
+        let pageColorIndex = 0;
+        
+        function addItem() {
+            const input = document.getElementById("newItem");
+            const newItemText = input.value.trim();
+            
+            if (newItemText) {
+                const li = document.createElement("li");
+                li.textContent = newItemText;
+                document.getElementById("bucketList").appendChild(li);
+                input.value = "";
+            }
+        }
+        
+        function changeBannerBg() {
+            bannerColorIndex = (bannerColorIndex + 1) % bannerColors.length;
+            document.getElementById("banner").style.backgroundColor = bannerColors[bannerColorIndex];
+        }
+        
+        function changePageBg() {
+            pageColorIndex = (pageColorIndex + 1) % pageColors.length;
+            document.body.style.backgroundColor = pageColors[pageColorIndex];
+        }
+    </script>
+</body>
